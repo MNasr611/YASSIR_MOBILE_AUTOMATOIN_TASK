@@ -1,0 +1,12 @@
+PLATFORM: ANDROID
+DEVICE_NAME: D30_11
+PLATFORM_VERSION: 10
+APP_PACKAGE: com.android.calculator2
+APP_ACTIVITY: com.android.calculator2.Calculator
+APPIUM_SERVER: http://localhost:4723/wd/hub
+APPIUM_TIMEOUT: 60
+APPIUM_WAIT: 10
+APPIUM_PORT: 4723
+APPIUM_LOG: /Users/username/Desktop/AppiumLogs
+APPIUM_LOG_LEVEL: info
+
