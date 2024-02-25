@@ -1,39 +1,50 @@
-# Jetflex Mobile App Automation Project
-
-This repository contains the automation tests for the Jetflex mobile application, which is a TMDB application type.
-
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Test Cases](#test-cases)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Introduction
-
-The Jetflex Mobile App Automation Project is designed to automate the testing of the TMDB application called Jetflex. It includes various test cases to ensure the functionality, performance, and reliability of the application.
+# Jetflix Mobile Application
 
 ## Prerequisites
 
-Before running the automation tests, make sure you have the following prerequisites installed:
+Before running the Jetflix mobile application, please make sure you have the following prerequisites installed and configured:
 
-- Mobile device emulator or physical device
-- Appium
-- Programming language (e.g., Java, Python)
-- Test framework (e.g., JUnit, TestNG)
+- [Android Studio](https://developer.android.com/studio): Install Android Studio to set up the Android development environment.
+- [Android Emulator](https://developer.android.com/studio/run/emulator): Set up and configure an Android emulator to run the Jetflix application.
+- [Appium](http://appium.io/): Install Appium to automate mobile application testing.
+- [Appium Inspector](http://appium.io/docs/en/writing-running-appium/inspector/index.html): Set up and configure Appium Inspector for inspecting mobile app elements.
+- Set the necessary environment variables for Android Studio, emulator, Appium, and Appium Inspector.
 
-## Installation
+## Running the Application
 
-To install the Jetflex Mobile App Automation Project, follow these steps:
+To run the Jetflix mobile application, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/jetflex-automation.git`
-2. Install the required dependencies: `npm install` or `pip install -r requirements.txt`
+1. Start the Appium server.
+2. Launch the Android emulator.
+3. Open the Jetflix project in Android Studio.
+4. Build and run the Jetflix application on the emulator.
 
-## Usage
+Please ensure that both the Appium server and the Android emulator are enabled and running before running the Jetflix application.
 
-To run the automation tests for the Jetflex mobile application, execute the following command:
+## License
 
+This project is licensed under the [MIT License](LICENSE).
+# Jetflix Mobile Automation Project
+
+This project is aimed at automating the testing of the Jetflix mobile application using Robot Framework.
+
+## Prerequisites
+
+Before running the automation tests, make sure you have the following prerequisites installed and configured:
+
+- [Android Studio](https://developer.android.com/studio) - Install Android Studio for Android development.
+- Emulator - Set up an Android emulator for running the Jetflix application.
+- [Appium](http://appium.io/) - Install Appium for mobile automation testing.
+- Inspector - Set up the Appium Inspector for inspecting mobile elements.
+
+Make sure to set the necessary environment variables for Android Studio, emulator, Appium, and Inspector.
+
+## Running the Tests
+
+To run the automation tests, follow these steps:
+
+1. Start the Appium server.
+2. Launch the Android emulator.
+3. Execute the Robot Framework test suite. 
+    ex: robot -d Logs -i <tag> Tests/
 ```bash

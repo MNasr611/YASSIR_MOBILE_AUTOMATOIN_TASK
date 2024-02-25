@@ -8,8 +8,9 @@ ${filterWithDate}    //android.widget.TextView[@text="Release Date"]/parent::*//
 ${filterWithPopularity}    //android.widget.TextView[@text="Popularity"]/parent::*//android.widget.RadioButton
 ${closeFilter}    //android.view.View[@content-desc="Close"]/parent::*//android.widget.Button
 ${dateOfReleases}    //android.view.View//android.widget.TextView[2]
-${dateOfFirstRelease}    (//android.view.View//android.widget.TextView[2])[1]
-
+${dateOfFirstRelease}    xpath=(((//android.view.View)[3]//android.view.View)[1]//android.widget.TextView)[2]
+${firstMovieInList}    (//android.view.View)[4]
+${detailsPageBack}    //android.view.View[@content-desc="Go Back"]/parent::*//android.widget.Button
 
 
 
@@ -55,16 +56,37 @@ Get All Release Dates
     Log    ${releases}
 
 Get First Release Date
-    ${dateOfFirstRelease}    Get Text    ${dateOfFirstRelease}   
-    Set Suite Variable    ${dateOfFirstRelease}
+    Sleep    30
+    Wait Until Element Is Visible        ${dateOfFirstRelease}
+    ${dateOfFirstReleaseElementText}    Get Text    ${dateOfFirstRelease}  
+    Set Suite Variable    ${dateOfFirstReleaseElementText}
 
 
 Validate That Date After Filter Is Greater
+    FOR    ${release}    IN    @{releases}
+        Should Be True    '${release}' < '${dateOfFirstReleaseElementText}'
+    END
     
+
+
+
+
     #date should be greater 
 
-        
 
+
+Check Movie Details Load Time
+    ${START_TIME}    Get Current Date    result_format=%H:%M:%S
+    Click Element    ${dateOfFirstRelease}
+    Wait Until Element Is Visible    ${detailsPageBack}
+    ${TIME_DIFF}    Calculate Time Diff In Minutes    ${START_TIME}
+    #click on the first movie details
+    #wait until the details page is opened
+    #validate that the details page is opened
+
+
+Back From Movie Details 
+    Click Element    ${detailsPageBack}
 
 ##For newtwork 
 # get date and time before any action
@@ -83,13 +105,37 @@ Validate That Date After Filter Is Greater
 
 
 
-# Calculate Time Diff In Minutes
-#     [Arguments]    ${START_TIME}
-#     ${END_TIME}=    Get Current Date    result_format=%H:%M:%S
-#     ${TIME_DIFF}=    Subtract Time From Time    ${END_TIME}    ${START_TIME}
-#     ${TIME_DIFF}=    Convert To Integer    ${TIME_DIFF}
-#     ${TIME_DIFF}=    Evaluate    ${TIME_DIFF}/60
-#     RETURN    ${TIME_DIFF}
+Change Network Type
+    [Arguments]    ${networkType}  
+    IF    '${networkType}' == '4g'
+        Run Process     adb shell svc data enable    shell=True
+        Run Process    adb shell svc wifi disable    shell=True
+        Run Process    adb shell am broadcast -a io.appium.settings.wifi --es setstatus enable    shell=True
+        Run Process    adb shell am broadcast -a io.appium.settings.data_connection --es setstatus enable_4g    shell=True
+    ELSE IF    '${networkType}' == '3g'
+        Run Process    adb shell svc data enable
+        Run Process    adb shell svc wifi disable
+        Run Process    adb shell am broadcast -a io.appium.settings.wifi --es setstatus enable
+        Run Process    adb shell am broadcast -a io.appium.settings.data_connection --es setstatus enable_3g
+
+    ELSE IF    '${networkType}' == 'E'
+        Run Process    adb shell svc data enable
+        Run Process    adb shell svc wifi disable
+        Run Process    adb shell am broadcast -a io.appium.settings.wifi --es setstatus enable
+        Run Process    adb shell am broadcast -a io.appium.settings.data_connection --es setstatus enable_edge
+    END
+
+
+
+
+Calculate Time Diff In Minutes
+    [Arguments]    ${START_TIME}
+    ${END_TIME}=    Get Current Date    result_format=%H:%M:%S
+    ${TIME_DIFF}=    Subtract Time From Time    ${END_TIME}    ${START_TIME}
+    ${TIME_DIFF}=    Convert To Integer    ${TIME_DIFF}
+    ${TIME_DIFF}=    Evaluate    ${TIME_DIFF}/60
+    Log        ${TIME_DIFF}
+    RETURN    ${TIME_DIFF}
 
 
 

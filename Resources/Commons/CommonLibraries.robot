@@ -9,5 +9,12 @@ Library    ../../JetFlixVerEnv/lib/site-packages/robot/libraries/XML.py
 Library    ../../JetFlixVerEnv/lib/site-packages/robot/libraries/Collections.py
 Library    ../JetFlixVerEnv/lib/site-packages/robot/libraries/Telnet.py
 Library    ../JetFlixVerEnv/lib/site-packages/robot/libraries/Process.py
+Library    ../../Libraries/AppiumBuilder.py
+
+
+
+
+
+
 
 
