@@ -73,6 +73,11 @@ Validate That Date After Filter Is Greater
 
     #date should be greater 
 
+Click Movies Details
+    Click Element    ${dateOfFirstRelease}
+
+Validate That Movie Details Page Opened
+    Wait Until Element Is Visible    ${detailsPageBack}
 
 
 Check Movie Details Load Time

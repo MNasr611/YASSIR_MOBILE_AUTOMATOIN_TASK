@@ -16,7 +16,7 @@ Suite Teardown    Run Keywords
 *** Test Cases ***
 
 
-TestCase <ID2>
+TestCase <ID3>
     [Tags]    testNetwork
     [Documentation]    Calculate Time Taken To Load Pages Over Different Network Types
     [Setup]    Enable Wifi
