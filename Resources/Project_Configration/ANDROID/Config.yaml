@@ -1,0 +1,9 @@
+PLATFORM_NAME: Android
+DEVICE_NAME: D30_11
+# UDID: emulator-5554
+# DEVICE_NAME: emulator-5554
+PLATFORM_VERSION: '13.0'
+AUTOMATION_NAME: UiAutomator2
+APP_PACKAGE: com.yasinkacmaz.jetflix.debug
+# APP_ACTIVITY: com.yasinkacmaz.jetflix.ui.main.MainActivity
+APP_ACTIVITY: com.yasinkacmaz.jetflix.ui.main.MainActivity

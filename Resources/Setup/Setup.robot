@@ -1,14 +1,26 @@
 *** Settings ***
-Library    AppiumLibrary
+Resource    ../Commons/Commons.robot
 
-*** Variables ***
-${DEVICE_NAME}    Android Emulator
-${PLATFORM_NAME}    Android
-${PLATFORM_VERSION}    10.0
-${APP_PACKAGE}    com.example.app
-${APP_ACTIVITY}    com.example.app.MainActivity
 
-*** Test Cases ***
+
+
+
+*** Keywords ***
 Connect to Device and Add Capabilities
-    Open Application    platformName=${PLATFORM_NAME}    platformVersion=${PLATFORM_VERSION}    deviceName=${DEVICE_NAME}    appPackage=${APP_PACKAGE}    appActivity=${APP_ACTIVITY}
+
+    Open Application    
+    ...    remote_url=${APPIUM_SERVER}    
+    ...    automationName=${AUTOMATION_NAME}    
+    ...    platformName=${PLATFORM_NAME}    
+    ...    platformVersion=${PLATFORM_VERSION}    
+    ...    deviceName=${DEVICE_NAME}    
+    ...    app=${EXECDIR}/${ANDROID_APP}    
+    ...    appPackage=${APP_PACKAGE}    
+    ...    appActivity=${APP_ACTIVITY}
+    ...    avd=${DEVICE_NAME}
+    ...    avdLaunchTimeout=6000000
+    ...    timeout=5m
+    # ...    avd=${DEVICE_NAME}
+    ...    adbExecTimeout=6000000
+    Set Appium Timeout    ${APPIUM_TIMEOUT}    
     # Add more test steps here

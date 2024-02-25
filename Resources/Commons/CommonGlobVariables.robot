@@ -1,0 +1,3 @@
+*** Variables ***
+${platformName}    ANDROID 
+#IOS
