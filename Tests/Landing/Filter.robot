@@ -2,7 +2,7 @@
     
 
 *** Settings ***
-Resource    ../Resources/Commons/Commons.robot
+Resource    ../../Resources/Commons/Commons.robot
 Suite Setup    Run Keywords
 ...    Start Appium Server
 
@@ -11,8 +11,8 @@ Suite Teardown    Run Keywords
 ...    Close Application
 ...    AND    
 ...    Close Connection
-# ...    AND
-# ...    Close Emulator
+...    AND
+...    Close Emulator
 ...    AND
 ...    Stop Appium    ${AppiumService}
 *** Test Cases ***
