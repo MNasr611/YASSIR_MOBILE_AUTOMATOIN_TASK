@@ -47,7 +47,6 @@ Get All Release Dates
     Wait Until Element Is Visible     ${dateOfReleases}
     ${releasesElements}    Get Webelements   ${dateOfReleases}
     ${releases}    Evaluate    []
-    # ${releases}    Convert To List    @{releases}
     FOR    ${releaseElement}    IN   @{releasesElements}
         ${date}    Get Text   ${releaseElement} 
         Append To List    ${releases}    ${date}        
@@ -56,7 +55,6 @@ Get All Release Dates
     Log    ${releases}
 
 Get First Release Date
-    Sleep    30
     Wait Until Element Is Visible        ${dateOfFirstRelease}
     ${dateOfFirstReleaseElementText}    Get Text    ${dateOfFirstRelease}  
     Set Suite Variable    ${dateOfFirstReleaseElementText}
@@ -80,14 +78,6 @@ Validate That Movie Details Page Opened
     Wait Until Element Is Visible    ${detailsPageBack}
 
 
-Check Movie Details Load Time
-    ${START_TIME}    Get Current Date    result_format=%H:%M:%S
-    Click Element    ${dateOfFirstRelease}
-    Wait Until Element Is Visible    ${detailsPageBack}
-    ${TIME_DIFF}    Calculate Time Diff In Minutes    ${START_TIME}
-    #click on the first movie details
-    #wait until the details page is opened
-    #validate that the details page is opened
 
 
 Back From Movie Details 

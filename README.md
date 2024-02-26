@@ -46,5 +46,5 @@ To run the automation tests, follow these steps:
 1. Start the Appium server.
 2. Launch the Android emulator.
 3. Execute the Robot Framework test suite. 
-    ex: robot -d Logs -i <tag> Tests/
+    ex: robot -d Logs --variable platformName:ANDROID -i testFilter Tests/
 ```bash

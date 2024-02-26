@@ -2,7 +2,7 @@
     
 
 *** Settings ***
-Resource    ../Resources/Commons/Commons.robot
+Resource    ../../Resources/Commons/Commons.robot
 Suite Setup    Run Keywords
 ...    Start Appium Server
 ...    AND
